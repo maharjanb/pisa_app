@@ -12,7 +12,7 @@ username <- cred$username
 password <- cred$password
 
 ## call web service for current year
-call <- paste0("http://apps.who.int/gho/athena/flumart/MEASURE/IMPACT,IMPACT_CL,IMPACT_COM,TRANSMISSION,TRANSMISSION_CL,TRANSMISSION_COM,SERIOUSNESS,SERIOUSNESS_CL,SERIOUSNESS_COM?filter=YEAR:",
+call <- paste0("http://apps.who.int/gho/athena/flumart/MEASURE/IMPACT,IMPACT_CL,IMPACT_COM,TRANSMISSION,TRANSMISSION_CL,TRANSMISSION_COM,SERIOUSNESS,SERIOUSNESS_CL,SERIOUSNESS_COM?filter=PISA/YEAR:",
                year_current,
                "&format=json&profile=pisa")
 
@@ -25,7 +25,7 @@ get_json <- fromJSON(get_text)
 df <- get_json
 
 ## call web service for previous year
-call <- paste0("http://apps.who.int/gho/athena/flumart/MEASURE/IMPACT,IMPACT_CL,IMPACT_COM,TRANSMISSION,TRANSMISSION_CL,TRANSMISSION_COM,SERIOUSNESS,SERIOUSNESS_CL,SERIOUSNESS_COM?filter=YEAR:",
+call <- paste0("http://apps.who.int/gho/athena/flumart/MEASURE/IMPACT,IMPACT_CL,IMPACT_COM,TRANSMISSION,TRANSMISSION_CL,TRANSMISSION_COM,SERIOUSNESS,SERIOUSNESS_CL,SERIOUSNESS_COM?filter=PISA/YEAR:",
                year_prev,
                "&format=json&profile=pisa")
 get_data <- GET(call, authenticate(username, password, type = "basic"))
@@ -37,7 +37,7 @@ get_json <- fromJSON(get_text)
 df <- rbind(df, get_json)
 
 ## call web service for two years prior
-# call <- paste0("http://apps.who.int/gho/athena/flumart/MEASURE/IMPACT,IMPACT_CL,IMPACT_COM,TRANSMISSION,TRANSMISSION_CL,TRANSMISSION_COM,SERIOUSNESS,SERIOUSNESS_CL,SERIOUSNESS_COM?filter=YEAR:",
+# call <- paste0("http://apps.who.int/gho/athena/flumart/MEASURE/IMPACT,IMPACT_CL,IMPACT_COM,TRANSMISSION,TRANSMISSION_CL,TRANSMISSION_COM,SERIOUSNESS,SERIOUSNESS_CL,SERIOUSNESS_COM?filter=PISA/YEAR:",
 #                year_prev_2,
 #                "&format=json&profile=pisa")
 # get_data <- GET(call, authenticate(username, password, type = "basic"))
